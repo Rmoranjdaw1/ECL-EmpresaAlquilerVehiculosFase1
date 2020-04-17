@@ -20,26 +20,89 @@ public class Vehiculo {
 	private String marca;
 	private String modelo;
 	private double precioDia;
+	private double calcularPrecioAlquiler;
+
+	public double getCalcularPrecioAlquiler() {
+		return calcularPrecioAlquiler;
+	}
+
+	public void setCalcularPrecioAlquiler(double calcularPrecioAlquiler) {
+		this.calcularPrecioAlquiler = calcularPrecioAlquiler;
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public double getPrecioDia() {
+		return precioDia;
+	}
+
+	public void setPrecioDia(double precioDia) {
+		this.precioDia = precioDia;
+	}
 
 	/**
 	 * Constructor
 	 */
 	public Vehiculo(String matricula, String marca, String modelo,
-	        double precioDia) {
+	        double precioDia,double calcularPrecioAlquiler) {
 		this.matricula = matricula.toUpperCase();
 		this.marca = marca.toUpperCase();
 		this.modelo = modelo.toUpperCase();
 		this.precioDia = precioDia;
-
+		this.calcularPrecioAlquiler = calcularPrecioAlquiler;
 	}
 
-	/**
-	 * Redefinición de hashCode()
-	 * 
-	 */
 	@Override
 	public int hashCode() {
-		return matricula.hashCode() * 13;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vehiculo other = (Vehiculo) obj;
+		if (matricula == null) {
+			if (other.matricula != null)
+				return false;
+		} else if (!matricula.equals(other.matricula))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Vehiculo [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", precioDia="
+				+ precioDia + ", calcularPrecioAlquiler=" + calcularPrecioAlquiler + "]";
 	}
 
 }
